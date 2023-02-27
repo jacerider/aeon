@@ -164,8 +164,9 @@ class PreprocessEntityGroup {
    * @return $this
    */
   public function addFields(array $field_names) {
-    foreach ($field_names as $field_name) {
+    foreach ($field_names as $index => $field_name) {
       $this->addField($field_name);
+      $this->fields[$field_name]['#weight'] = $index;
     }
     return $this;
   }
