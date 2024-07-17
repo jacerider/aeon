@@ -53,14 +53,17 @@
 
     // Loop through each gutter position
     @each $value in $position {
-      #{$type}-#{$value}: ($margin * 2) * $multiplier;
 
-      @include breakpoint(medium) {
-        #{$type}-#{$value}: ($margin * 3) * $multiplier;
-      }
-
-      @include breakpoint(large) {
-        #{$type}-#{$value}: ($margin * 3.5) * $multiplier;
+      & {
+        #{$type}-#{$value}: ($margin * 2) * $multiplier;
+        
+        @include breakpoint(medium) {
+          #{$type}-#{$value}: ($margin * 3) * $multiplier;
+        }
+      
+        @include breakpoint(large) {
+          #{$type}-#{$value}: ($margin * 3.5) * $multiplier;
+        }
       }
     }
   }
@@ -70,14 +73,17 @@
 
     // Loop through each gutter position
     @each $value in $position {
-      #{$type}-#{$value}: ($padding * 2) * $multiplier;
 
-      @include breakpoint(medium) {
-        #{$type}-#{$value}: ($padding * 3) * $multiplier;
-      }
-
-      @include breakpoint(large) {
-        #{$type}-#{$value}: ($padding * 3.5) * $multiplier;
+      & {
+        #{$type}-#{$value}: ($padding * 2) * $multiplier;
+        
+        @include breakpoint(medium) {
+          #{$type}-#{$value}: ($padding * 3) * $multiplier;
+        }
+      
+        @include breakpoint(large) {
+          #{$type}-#{$value}: ($padding * 3.5) * $multiplier;
+        }
       }
     }
   }
