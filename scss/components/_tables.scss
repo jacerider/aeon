@@ -85,8 +85,8 @@
 
     &.unstriped {
       tbody {
-        @include -aeon-table-unstripe();
         background-color: $table-background;
+        @include -aeon-table-unstripe();
       }
     }
   }
