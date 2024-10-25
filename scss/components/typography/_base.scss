@@ -1,3 +1,4 @@
+@use "sass:color";
 // Base Typography
 // - - - - - - - - - - - - - - -
 // These are styles applied to basic HTML tags, including:
@@ -113,7 +114,7 @@ $anchor-color: color(theme-primary) !default;
 
 /// Default color for links on hover.
 /// @type Color
-$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+$anchor-color-hover: color.scale($anchor-color, $lightness: -14%);
 
 /// Default text deocration for links.
 /// @type String

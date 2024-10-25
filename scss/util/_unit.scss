@@ -1,3 +1,5 @@
+@use "sass:list";
+@use "sass:meta";
 @use "sass:math";
 
 $global-font-size: 100% !default;
@@ -18,7 +20,7 @@ $global-font-size: 100% !default;
 /// @returns {List} A list of converted values.
 @function rem-calc($values, $base: null) {
   $rem-values: ();
-  $count: length($values);
+  $count: list.length($values);
 
   // If no base is defined, defer to the global font size
   @if $base == null {
@@ -27,12 +29,12 @@ $global-font-size: 100% !default;
 
   // If the base font size is a %, then multiply it by 16px
   // This is because 100% font size = 16px in most all browsers
-  @if unit($base) == '%' {
+  @if math.unit($base) == '%' {
     $base: math.div($base, 100%) * 16px;
   }
 
   // Using rem as base allows correct scaling
-  @if unit($base) == 'rem' {
+  @if math.unit($base) == 'rem' {
     $base: strip-unit($base) * 16px;
   }
 
@@ -41,7 +43,7 @@ $global-font-size: 100% !default;
   }
 
   @for $i from 1 through $count {
-    $rem-values: append($rem-values, -aeon-to-rem(nth($values, $i), $base));
+    $rem-values: list.append($rem-values, -aeon-to-rem(list.nth($values, $i), $base));
   }
 
   @return $rem-values;
@@ -50,7 +52,7 @@ $global-font-size: 100% !default;
 // Converts a unitless, pixel, or rem value to em, for use in breakpoints.
 @function -aeon-bp-to-em($value) {
   // Pixel and unitless values are converted to rems
-  @if unit($value) == 'px' or unitless($value) {
+  @if math.unit($value) == 'px' or math.is-unitless($value) {
     $value: rem-calc($value, $base: 16px);
   }
 
@@ -67,18 +69,18 @@ $global-font-size: 100% !default;
 /// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
 @function -aeon-to-rem($value, $base: null) {
   // Check if the value is a number
-  @if type-of($value) != 'number' {
-    @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+  @if meta.type-of($value) != 'number' {
+    @warn meta.inspect($value) + ' was passed to rem-calc(), which is not a number.';
     @return $value;
   }
 
   // Transform em into rem if someone hands over 'em's
-  @if unit($value) == 'em' {
+  @if math.unit($value) == 'em' {
     $value: strip-unit($value) * 1rem;
   }
 
   // Calculate rem if units for $value is not rem or em
-  @if unit($value) != 'rem' {
+  @if math.unit($value) != 'rem' {
     $value: math.div(strip-unit($value), strip-unit($base)) * 1rem;
   }
 
@@ -106,38 +108,38 @@ $global-font-size: 100% !default;
   // First, lets convert our $base to pixels
 
   // If the base font size is a %, then multiply it by 16px
-  @if unit($base) == '%' {
+  @if math.unit($base) == '%' {
     $base: math.div($base, 100%) * 16px;
   }
 
-  @if unit($base) == 'rem' {
+  @if math.unit($base) == 'rem' {
     $base: strip-unit($base) * 16px;
   }
 
-  @if unit($base) == 'em' {
+  @if math.unit($base) == 'em' {
     $base: strip-unit($base) * 16px;
   }
 
   // Now let's convert our value to pixels too
-  @if unit($value) == '%' {
+  @if math.unit($value) == '%' {
     $value: math.div($value, 100%) * $base;
   }
 
-  @if unit($value) == 'rem' {
+  @if math.unit($value) == 'rem' {
     $value: strip-unit($value) * $base;
   }
 
-  @if unit($value) == 'em' {
+  @if math.unit($value) == 'em' {
     $value: strip-unit($value) * $base;
   }
 
   // 'px'
-  @if unit($value) == 'px' {
+  @if math.unit($value) == 'px' {
     @return math.div(strip-unit($value), strip-unit($base));
   }
 
   // assume that line-heights greater than 10 are meant to be absolute in 'px'
-  @if unitless($value) and ($value > 10) {
+  @if math.is-unitless($value) and ($value > 10) {
     @return math.div($value, strip-unit($base));
   }
 

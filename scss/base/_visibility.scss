@@ -1,7 +1,8 @@
+@use "sass:map";
 /// Hide an element by default, only displaying it above a certain screen size.
 /// @param {Keyword} $size - Breakpoint to use. **Must be a breakpoint defined in `$breakpoints`.**
 @mixin show-for($size) {
-  $size: map-get($breakpoints, $size);
+  $size: map.get($breakpoints, $size);
   // Max value is 0.2px under the next breakpoint (0.02 / 16 = 0.00125).
   // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
   // See https://github.com/zurb/foundation-sites/issues/11313

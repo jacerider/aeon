@@ -18,7 +18,6 @@
     "gulp-stylelint": "^13.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
-    "node-sass": "^8.0.0",
     "sass": "^1.58.0",
     "stylelint": "^13.13.1",
     "stylelint-config-ash": "^3.0.2",
