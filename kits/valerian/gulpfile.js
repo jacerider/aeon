@@ -82,7 +82,8 @@ function css(cb) {
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed',
-      includePaths: config.css.includePaths
+      includePaths: config.css.includePaths,
+      silenceDeprecations: ['import', 'legacy-js-api'],
     }).on('error', sass.logError))
     .pipe(autoprefixer({
       browserlist: ['last 2 versions'],
@@ -130,7 +131,8 @@ function componentCss(cb) {
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed',
-      includePaths: config.components.css.includePaths
+      includePaths: config.components.css.includePaths,
+      silenceDeprecations: ['import', 'legacy-js-api'],
     }).on('error', sass.logError))
     .pipe(autoprefixer({
       browserlist: ['last 2 versions'],
