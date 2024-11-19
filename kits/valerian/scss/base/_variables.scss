@@ -1,6 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // VARIABLES
 // -----------------------------------------------------------------------------
+@use 'sass:color';
+@use 'sass:map';
 
 $global-width: rem-calc(1200);
 $grid-row-width: $global-width;
@@ -14,7 +16,7 @@ $theme-colors: (
   theme-warning: #f1ba2e,
   theme-alert: #e54040,
 );
-$colors: map-merge($global-colors, map-merge($exo-colors, $theme-colors));
+$colors: map.merge($global-colors, map.merge($exo-colors, $theme-colors));
 
 // Base
 // ----------
@@ -25,13 +27,13 @@ $header-font-family: $sans;
 $body-background: color(theme-white);
 $body-font-color: color(theme-black);
 $anchor-color: color(theme-primary);
-$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+$anchor-color-hover: color.scale($anchor-color, $lightness: -14%);
 $grid-margin-gutters: rem-calc(30);
 
 // Button
 // ----------
 $button-background: color(theme-primary);
-$button-background-hover: scale-color($button-background, $lightness: -15%);
+$button-background-hover: color.scale($button-background, $lightness: -15%);
 
 // Menu
 // ----------
