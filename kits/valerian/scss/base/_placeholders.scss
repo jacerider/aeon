@@ -6,7 +6,6 @@
 // Base styles for any button type. @See component-button-{$option} mixins for further styles.
 // ---------
 %button {
-  @include fluid-type(rem-calc(13), rem-calc(15));
   display: inline-block;
   vertical-align: middle;
   margin: 0;
@@ -22,6 +21,7 @@
   text-align: center;
   cursor: pointer;
   transition: all $global-speed ease;
+  @include fluid-type(rem-calc(13), rem-calc(15));
 
   &,
   &:visited,

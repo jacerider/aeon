@@ -7,6 +7,6 @@ body,
 }
 
 .section.main {
-  @include clearfix;
   background: color(theme-white);
+  @include clearfix;
 }

@@ -174,14 +174,14 @@
 }
 
 @mixin component-button-small {
-  @include fluid-type(rem-calc(11), rem-calc(13));
   padding: ($global-padding * 0.5) ($global-padding);
+  @include fluid-type(rem-calc(11), rem-calc(13));
   @content;
 }
 
 @mixin component-button-large {
-  @include fluid-type(rem-calc(20), rem-calc(22));
   padding: ($global-padding) ($global-padding * 1.5);
+  @include fluid-type(rem-calc(20), rem-calc(22));
   @content;
 }
 
@@ -233,10 +233,10 @@
   @if ($max-vw == null) {
     $max-vw: rem-calc(map.get($breakpoints, 'xlarge'));
   }
-  $min-vw-unit: unit($min-vw);
-  $max-vw-unit: unit($max-vw);
-  $min-font-size-unit: unit($min-font-size);
-  $max-font-size-unit: unit($max-font-size);
+  $min-vw-unit: math.unit($min-vw);
+  $max-vw-unit: math.unit($max-vw);
+  $min-font-size-unit: math.unit($min-font-size);
+  $max-font-size-unit: math.unit($max-font-size);
 
   @if $min-vw-unit == $max-vw-unit and $min-vw-unit == $min-font-size-unit and $min-vw-unit == $max-font-size-unit {
 
