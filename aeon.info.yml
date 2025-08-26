@@ -4,7 +4,7 @@ type: theme
 base theme: false
 package: 'Aeon'
 screenshot: screenshot.png
-core_version_requirement: '^9.3 || ^10'
+core_version_requirement: '^9.3 || ^10 || ^11'
 
 stylesheets-remove:
   - system.theme.css
