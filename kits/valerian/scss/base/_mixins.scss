@@ -1,36 +1,37 @@
 ////////////////////////////////////////////////////////////////////////////////
 // MIXINS
 // -----------------------------------------------------------------------------
-
-@use 'sass:math'; /* stylelint-disable-line at-rule-no-unknown */
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:map';
 
 /// Transfers the colors in the `$colors`map into variables, such as `$primary-color` and `$secondary-color`. Call this mixin below the Global section of your settings file to properly migrate your codebase.
 @mixin add-foundation-colors() {
-  @if map-has-key($colors, theme-primary) {
+  @if map.has-key($colors, theme-primary) {
     $primary-color: color(theme-primary) !global;
   }
   @else {
     $primary-color: #1779ba !global; /* stylelint-disable-line color-no-hex */
   }
-  @if map-has-key($colors, theme-secondary) {
+  @if map.has-key($colors, theme-secondary) {
     $secondary-color: color(theme-secondary) !global;
   }
   @else {
     $secondary-color: #767676 !global; /* stylelint-disable-line color-no-hex */
   }
-  @if map-has-key($colors, theme-success) {
+  @if map.has-key($colors, theme-success) {
     $success-color: color(theme-success) !global;
   }
   @else {
     $success-color: #86c13d !global; /* stylelint-disable-line color-no-hex */
   }
-  @if map-has-key($colors, theme-warning) {
+  @if map.has-key($colors, theme-warning) {
     $warning-color: color(theme-warning) !global;
   }
   @else {
     $warning-color: #f1ba2e !global; /* stylelint-disable-line color-no-hex */
   }
-  @if map-has-key($colors, theme-alert) {
+  @if map.has-key($colors, theme-alert) {
     $alert-color: color(theme-alert) !global;
   }
   @else {
@@ -56,11 +57,11 @@
 
       & {
         #{$type}-#{$value}: ($margin * 2) * $multiplier;
-        
+
         @include breakpoint(medium) {
           #{$type}-#{$value}: ($margin * 3) * $multiplier;
         }
-      
+
         @include breakpoint(large) {
           #{$type}-#{$value}: ($margin * 3.5) * $multiplier;
         }
@@ -76,11 +77,11 @@
 
       & {
         #{$type}-#{$value}: ($padding * 2) * $multiplier;
-        
+
         @include breakpoint(medium) {
           #{$type}-#{$value}: ($padding * 3) * $multiplier;
         }
-      
+
         @include breakpoint(large) {
           #{$type}-#{$value}: ($padding * 3.5) * $multiplier;
         }
@@ -173,14 +174,14 @@
 }
 
 @mixin component-button-small {
-  @include fluid-type(rem-calc(11), rem-calc(13));
   padding: ($global-padding * 0.5) ($global-padding);
+  @include fluid-type(rem-calc(11), rem-calc(13));
   @content;
 }
 
 @mixin component-button-large {
-  @include fluid-type(rem-calc(20), rem-calc(22));
   padding: ($global-padding) ($global-padding * 1.5);
+  @include fluid-type(rem-calc(20), rem-calc(22));
   @content;
 }
 
@@ -227,15 +228,15 @@
 @mixin fluid-type($min-font-size, $max-font-size, $min-vw: null, $max-vw: null, $property: font-size) {
 
   @if ($min-vw == null) {
-    $min-vw: rem-calc(map-get($breakpoints, 'medium'));
+    $min-vw: rem-calc(map.get($breakpoints, 'medium'));
   }
   @if ($max-vw == null) {
-    $max-vw: rem-calc(map-get($breakpoints, 'xlarge'));
+    $max-vw: rem-calc(map.get($breakpoints, 'xlarge'));
   }
-  $min-vw-unit: unit($min-vw);
-  $max-vw-unit: unit($max-vw);
-  $min-font-size-unit: unit($min-font-size);
-  $max-font-size-unit: unit($max-font-size);
+  $min-vw-unit: math.unit($min-vw);
+  $max-vw-unit: math.unit($max-vw);
+  $min-font-size-unit: math.unit($min-font-size);
+  $max-font-size-unit: math.unit($max-font-size);
 
   @if $min-vw-unit == $max-vw-unit and $min-vw-unit == $min-font-size-unit and $min-vw-unit == $max-font-size-unit {
 

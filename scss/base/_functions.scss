@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 
 /// Scales a color to be darker if it's light, or lighter if it's dark. Use this function to tint a color appropriate to its lightness.
 ///
@@ -8,7 +8,7 @@
 ///
 /// @returns {Color} A scaled color.
 @function smart-scale($color, $scale: 5%, $threshold: 40%) {
-  @if color.channel($color, "lightness", $space: hsl) > $threshold {
+  @if color.channel($color, 'lightness', $space: hsl) > $threshold {
     $scale: -$scale;
   }
   @return color.scale($color, $lightness: $scale);

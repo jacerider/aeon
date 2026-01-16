@@ -27,9 +27,9 @@
 
       .user-login-form,
       .user-pass {
+        padding: 0 ($global-padding);
         @include flex;
         @include exo-flex-direction(column);
-        padding: 0 ($global-padding);
 
         > .exo-form-element {
           margin-top: $global-margin;
