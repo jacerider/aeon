@@ -17,8 +17,8 @@
       if ($sidebars.length) {
         var $first = $sidebars.filter('.first');
         var $second = $sidebars.filter('.second');
-        var hasFirst = $first.length && $.trim($first.html().replace(/(<([^>]+)>)/ig,"")).length;
-        var hasLast = $second.length && $.trim($sidebars.filter('.second').html().replace(/(<([^>]+)>)/ig,"")).length;
+        var hasFirst = $first.length && $first.html().replace(/(<([^>]+)>)/ig,"").trim().length;
+        var hasLast = $second.length && $sidebars.filter('.second').html().replace(/(<([^>]+)>)/ig,"").trim().length;
         if (hasFirst) {
           $body.addClass('sidebar-first');
         }
