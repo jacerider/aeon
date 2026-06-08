@@ -36,7 +36,9 @@
     </div>
   {% endif %}
   {% if errors %}
-    <div class="field-error">
+    {# When the form provides an #error_id, advertise it so the input's
+       aria-describedby can reference the inline error message. #}
+    <div class="field-error"{% if error_id %} id="{{ error_id }}"{% endif %}>
       {{ errors }}
     </div>
   {% endif %}
