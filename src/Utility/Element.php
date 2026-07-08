@@ -45,7 +45,7 @@ class Element extends DrupalAttributes {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    */
-  public function __construct(&$element = [], FormStateInterface $form_state = NULL) {
+  public function __construct(&$element = [], ?FormStateInterface $form_state = NULL) {
     if (!is_array($element)) {
       $element = ['#markup' => $element instanceof MarkupInterface ? $element : new FormattableMarkup($element, [])];
     }
@@ -211,7 +211,7 @@ class Element extends DrupalAttributes {
    * @return \Drupal\aeon\Utility\Element
    *   The newly created element instance.
    */
-  public static function create(&$element = [], FormStateInterface $form_state = NULL) {
+  public static function create(&$element = [], ?FormStateInterface $form_state = NULL) {
     return $element instanceof self ? $element : new self($element, $form_state);
   }
 
@@ -229,7 +229,7 @@ class Element extends DrupalAttributes {
    * @return \Drupal\aeon\Utility\Element
    *   The newly created element instance.
    */
-  public static function createStandalone($element = [], FormStateInterface $form_state = NULL) {
+  public static function createStandalone($element = [], ?FormStateInterface $form_state = NULL) {
     // Immediately return a cloned version if element is already an Element.
     if ($element instanceof self) {
       return clone $element;

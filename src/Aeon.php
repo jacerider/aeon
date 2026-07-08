@@ -412,7 +412,7 @@ class Aeon {
    * @return \Drupal\aeon\Theme
    *   A theme object.
    */
-  public static function getTheme($name = NULL, ThemeHandlerInterface $theme_handler = NULL) {
+  public static function getTheme($name = NULL, ?ThemeHandlerInterface $theme_handler = NULL) {
     // Immediately return if theme passed is already instantiated.
     if ($name instanceof Theme) {
       return $name;
