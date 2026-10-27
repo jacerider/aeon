@@ -3,3 +3,9 @@
 aeon.settings:
   type: theme_settings
   label: 'Aeon settings'
+  mapping:
+    schemas:
+      type: sequence
+      label: 'Installed schema versions, keyed by theme'
+      sequence:
+        type: integer
